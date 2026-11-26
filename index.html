@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020916">
+<title>MJ - Advanced AI</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ background:radial-gradient(circle at center,#102c48,#020713 75%);
+ color:#bcefff;
+ font-family:Arial,sans-serif;
+ text-align:center;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+
+header{
+ padding:22px 10px;
+ border-bottom:1px solid #147bb0;
+}
+
+header h1{
+ margin:5px;
+ font-size:34px;
+ letter-spacing:8px;
+ color:#56dcff;
+ text-shadow:0 0 20px #00bfff;
+}
+
+.status{
+ color:#43ffbc;
+ font-size:11px;
+ letter-spacing:3px;
+}
+
+.core{
+ width:280px;
+ height:280px;
+ margin:35px auto 20px;
+ position:relative;
+ border-radius:50%;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ background:radial-gradient(circle,#123e59 0%,#06182d 55%,transparent 72%);
+}
+
+.ring{
+ position:absolute;
+ border:1px solid #22caff;
+ border-radius:50%;
+ box-shadow:0 0 12px #00aaff;
+}
+
+.ring.one{
+ width:260px;height:260px;
+ border-style:dashed;
+ animation:rotate 18s linear infinite;
+}
+
+.ring.two{
+ width:230px;height:230px;
+ border-color:#55eaff;
+ border-top:3px solid transparent;
+ border-bottom:3px solid transparent;
+ animation:rotate 7s linear infinite reverse;
+}
+
+.ring.three{
+ width:200px;height:200px;
+ border-style:dotted;
+ animation:rotate 12s linear infinite;
+}
+
+@keyframes rotate{
+ to{transform:rotate(360deg)}
+}
+
+/* FUTURISTIC AI GIRL */
+
+.avatar{
+ width:160px;
+ height:190px;
+ position:relative;
+ z-index:2;
+ filter:drop-shadow(0 0 12px #00cfff);
+ animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+ 50%{transform:translateY(-6px)}
+}
+
+.hair{
+ position:absolute;
+ width:116px;
+ height:153px;
+ top:5px;
+ left:22px;
+ background:linear-gradient(90deg,#06304f,#29c9f5,#06304f);
+ clip-path:polygon(25% 0,75% 0,100% 35%,92% 100%,76% 75%,72% 28%,28% 28%,24% 75%,8% 100%,0 35%);
+ border:1px solid #7ceeff;
+}
+
+.face{
+ position:absolute;
+ width:76px;
+ height:108px;
+ top:28px;
+ left:42px;
+ background:linear-gradient(100deg,#0b4e70,#42dfff,#126184);
+ clip-path:polygon(15% 0,85% 0,100% 38%,83% 84%,50% 100%,17% 84%,0 38%);
+ border:1px solid #9af4ff;
+ box-shadow:inset 0 0 20px #00d9ff;
+}
+
+.eye{
+ position:absolute;
+ width:15px;
+ height:4px;
+ top:42px;
+ background:#a5faff;
+ box-shadow:0 0 10px #00eaff;
+ border-radius:50%;
+}
+
+.eye.left{left:12px}
+.eye.right{right:12px}
+
+.nose{
+ position:absolute;
+ top:43px;
+ left:35px;
+ width:5px;
+ height:19px;
+ border-left:1px solid #b1faff;
+}
+
+.mouth{
+ position:absolute;
+ top:76px;
+ left:27px;
+ width:22px;
+ height:5px;
+ border-bottom:1px solid #a8faff;
+ border-radius:50%;
+}
+
+.neck{
+ position:absolute;
+ width:37px;
+ height:32px;
+ left:62px;
+ top:126px;
+ background:linear-gradient(90deg,#0879a3,#43dfff,#0879a3);
+}
+
+.shoulders{
+ position:absolute;
+ width:142px;
+ height:53px;
+ left:9px;
+ bottom:0;
+ background:linear-gradient(90deg,#07314e,#28bde8,#07314e);
+ clip-path:polygon(30% 0,70% 0,100% 40%,100% 100%,0 100%,0 40%);
+ border-top:2px solid #8df5ff;
+}
+
+.circuit{
+ position:absolute;
+ top:0;
+ left:0;
+ width:100%;
+ height:100%;
+ background:repeating-linear-gradient(
+ transparent 0px,
+ transparent 4px,
+ rgba(85,226,255,.10) 5px
+ );
+ pointer-events:none;
+}
+
+.scan{
+ position:absolute;
+ width:100%;
+ height:3px;
+ top:0;
+ background:#a3faff;
+ box-shadow:0 0 15px #00eaff;
+ animation:scan 3s linear infinite;
+}
+
+@keyframes scan{
+ from{top:5%}
+ to{top:95%}
+}
+
+.label{
+ color:#52e5ff;
+ font-size:11px;
+ letter-spacing:3px;
+ margin:12px;
+}
+
+.clock{
+ font-size:34px;
+ color:white;
+ text-shadow:0 0 15px #00bfff;
+}
+
+.date{
+ font-size:13px;
+ color:#7cbdd9;
+ margin:8px;
+}
+
+.panel{
+ margin:18px;
+ padding:18px;
+ border:1px solid #147bb0;
+ border-radius:14px;
+ background:rgba(5,27,48,.85);
+ box-shadow:0 0 15px #063c63;
+}
+
+button{
+ background:#073d62;
+ color:#dffaff;
+ border:1px solid #39dfff;
+ padding:12px 17px;
+ margin:5px;
+ border-radius:8px;
+}
+
+input{
+ width:75%;
+ padding:12px;
+ background:#071525;
+ border:1px solid #36cfff;
+ color:white;
+ border-radius:8px;
+}
+
+#answer{
+ color:#a9eaff;
+ line-height:1.6;
+ overflow-wrap:anywhere;
+}
+
+footer{
+ color:#56849d;
+ padding:25px;
+ font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="status" id="status">SYSTEM ONLINE</div>
+ <h1>MJ</h1>
+ <div>MARY JANE • ADVANCED AI</div>
+</header>
+
+<div class="core">
+
+ <div class="ring one"></div>
+ <div class="ring two"></div>
+ <div class="ring three"></div>
+
+ <div class="avatar">
+  <div class="hair"></div>
+
+  <div class="face">
+   <div class="eye left"></div>
+   <div class="eye right"></div>
+   <div class="nose"></div>
+   <div class="mouth"></div>
+  </div>
+
+  <div class="neck"></div>
+  <div class="shoulders"></div>
+  <div class="circuit"></div>
+  <div class="scan"></div>
+ </div>
+
+</div>
+
+<div class="label">ARTIFICIAL INTELLIGENCE CORE</div>
+
+<h3>HELLO SIR</h3>
+<div id="clock" class="clock">00:00:00</div>
+<div id="date" class="date"></div>
+
+<div class="panel">
+ <h3>SYSTEM STATUS</h3>
+ <p id="internet">Checking Network...</p>
+ <p>AI CORE: READY</p>
+</div>
+
+<div class="panel">
+ <h3>TALK WITH MJ</h3>
+ <p id="answer">Hello Sir! I am MJ. How can I help you?</p>
+
+ <input id="message" placeholder="Talk to MJ...">
+ <br><br>
+ <button onclick="sendMessage()">SEND</button>
+ <button onclick="listen()">🎤 SPEAK</button>
+</div>
+
+<div class="panel">
+ <h3>QUICK COMMANDS</h3>
+ <button onclick="reply('Hello Sir! MJ is ready.')">HELLO</button>
+ <button onclick="showTime()">TIME</button>
+</div>
+
+<footer>
+ MJ MARY JANE | ADVANCED AI SYSTEM
+ <br>VERSION 2.0
+</footer>
+
+<script>
+function updateClock(){
+ const now=new Date();
+ document.getElementById("clock").textContent=
+ now.toLocaleTimeString();
+ document.getElementById("date").textContent=
+ now.toDateString();
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+function updateStatus(){
+ document.getElementById("internet").textContent=
+ navigator.onLine?"NETWORK: ONLINE":"NETWORK: OFFLINE";
+ document.getElementById("status").textContent=
+ navigator.onLine?"SYSTEM ONLINE":"OFFLINE MODE";
+}
+
+window.addEventListener("online",updateStatus);
+window.addEventListener("offline",updateStatus);
+updateStatus();
+
+function reply(text){
+ document.getElementById("answer").textContent=text;
+
+ if("speechSynthesis" in window){
+  speechSynthesis.cancel();
+  let speech=new SpeechSynthesisUtterance(text);
+  speech.lang="en-IN";
+  speechSynthesis.speak(speech);
+ }
+}
+
+function showTime(){
+ reply("Sir, the time is "+new Date().toLocaleTimeString());
+}
+
+function sendMessage(){
+ let input=document.getElementById("message");
+ let text=input.value.trim().toLowerCase();
+
+ if(!text)return reply("Sir, please enter a message.");
+
+ if(text.includes("hello")||text.includes("hi"))
+ reply("Hello Sir! I am MJ. How can I help you?");
+ else if(text.includes("time"))showTime();
+ else if(text.includes("your name"))
+ reply("Sir, I am Mary Jane, your AI assistant.");
+ else
+ reply("Sir, my advanced AI brain will be connected in the next phase.");
+
+ input.value="";
+}
+
+function listen(){
+ const Recognition=window.SpeechRecognition||
+ window.webkitSpeechRecognition;
+
+ if(!Recognition){
+  reply("Sir, voice recognition is not supported in this browser.");
+  return;
+ }
+
+ let recognition=new Recognition();
+ recognition.lang="en-IN";
+
+ recognition.onresult=function(event){
+  document.getElementById("message").value=
+  event.results[0][0].transcript;
+  sendMessage();
+ };
+
+ recognition.onerror=function(){
+  reply("Sir, voice recognition could not start.");
+ };
+
+ recognition.start();
+}
+</script>
+
+</body>
+</html>
